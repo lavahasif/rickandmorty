@@ -5,11 +5,11 @@
 <h3>
 Graphql Implemented
 </h3>
-Endpoint
-```url
-https://rickandmortyapi.com/graphql
 
-````
+```gql
+Endpoint
+https://rickandmortyapi.com/graphql
+```
 
 For Fetching Episode
 
@@ -41,4 +41,4 @@ query Query($page: Int) {
     }
   }
 }
-````
+```
