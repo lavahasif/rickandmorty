@@ -5,38 +5,40 @@
 <h3>
 Graphql Implemented
 </h3>
-For Fetching Episod
+Endpoint
+```url
+https://rickandmortyapi.com/graphql
+
+````
+
+For Fetching Episode
+
 ```gql
-
 query Query($page: Int) {
-episodes(page: $page) {
-info {
-next
-pages
-prev
-count
-}
-results {
-air_date
+  episodes(page: $page) {
+    info {
+      next
+      pages
+      prev
+      count
+    }
+    results {
+      air_date
 
-        episode
-        id
+      episode
+      id
+      name
+      created
+      characters {
         name
+        image
+        status
+        species
+        type
+        gender
         created
-        characters {
-          name
-          image
-          status
-          species
-          type
-          gender
-          created
-        }
       }
     }
-
+  }
 }
-
-```
-
-```
+````
