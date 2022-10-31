@@ -42,3 +42,9 @@ query Query($page: Int) {
   }
 }
 ```
+
+<h4>Docker Added</h4>
+
+```docker
+docker build --rm --pull -f "E:\Workspace\Node\work\gtest\rickandmorty/Dockerfile" --label "com.microsoft.created-by=visual-studio-code" -t "rickandmorty2:latest" "E:\Workspace\Node\work\gtest\rickandmorty"
+```
