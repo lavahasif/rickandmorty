@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
-import Content from "../component/Content";
+import { Content } from "../component/Content";
+
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 import Hero from "../component/Hero";

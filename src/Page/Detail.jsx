@@ -7,14 +7,14 @@ import Hero from "../component/Hero";
 
 function DetailPage(props) {
   var location = useLocation();
-  const { episode } = location.state;
+  const episode = location.state;
   return (
     <div className="App">
       <Header />
       <Box
         sx={{
           display: "flex",
-          height: "100vh",
+          minHeight: "100vh",
           width: "100%",
           flexDirection: "column",
           flexWrap: "nowrap",
@@ -22,7 +22,7 @@ function DetailPage(props) {
       >
         <Hero flexGrow="5" />
 
-        <ContentEpisode episode={episode} flexGrow="10" />
+        <ContentEpisode episode={episode} flexGrow="1" />
         <Footer sx={{ position: "fixed", bottom: "0px" }} flexGrow="4" />
       </Box>
     </div>

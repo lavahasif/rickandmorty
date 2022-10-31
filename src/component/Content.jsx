@@ -1,23 +1,60 @@
-import { Box, Container, Grid } from "@mui/material";
+import { useQuery } from "@apollo/client";
+import {
+  Box,
+  CircularProgress,
+  Container,
+  Grid,
+  Pagination,
+  Stack,
+} from "@mui/material";
 import { render } from "@testing-library/react";
-import React from "react";
+import React, { createContext, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import {
+  EPISODE_QUERY_PAGE_CHARACTER,
+  EPISODE_QUERY_PAGE,
+} from "../Repository/FetchGraph";
 import Cards from "./Card";
 import "./Content.css";
+var ItemContext = createContext({});
 function Content(props) {
   const numbers = [1, 2, 3, 4, 5];
-  const listItems = numbers.map((number) => (
-    <li key={number.toString()}>{number}</li>
-  ));
+  const [pcount, setpcount] = useState(1);
+  const [page, setPage] = useState(1);
+  const [og, setog] = useState(undefined);
+  const { data, loading, error } = useQuery(EPISODE_QUERY_PAGE_CHARACTER, {
+    variables: { page },
+  });
+  const HandleChange = (event, value) => {
+    setPage(value);
+  };
 
-  const itmes = [1, 2, 3, 4, 5].map((item) => {
+  let items = "<></>";
+  useEffect(() => {
+    if (!loading && !error) {
+      setpcount(data.episodes.info.pages);
+    }
+    // return () => {};
+  }, [data]);
+
+  if (loading)
     return (
-      <Grid key={item} item xs={6} md={6} lg={4}>
-        <Cards keys={item} />
+      <Stack alignItems="center" justify="center">
+        <CircularProgress />;
+      </Stack>
+    );
+
+  if (error) return <pre>{error.message}</pre>;
+
+  items = data.episodes.results.map((item) => {
+    return (
+      <Grid key={item.id + 1000} item xs={6} md={6} lg={4}>
+        <ItemContext.Provider value={item}>
+          <Cards {...item}>{item}</Cards>
+        </ItemContext.Provider>
       </Grid>
     );
   });
-
   return (
     <Box
       key={"content"}
@@ -27,16 +64,29 @@ function Content(props) {
         backgroundColor: "#181818",
         top: "46%",
         width: "100%",
-        height: "200vh",
+        // height: "100%",
+        minHeight: "100vh",
       }}
     >
       <Container maxWidth="lg">
         <h1 sx={{ float: "left" }}> Episodes</h1>
         <Grid container spacing={4}>
-          {itmes}
+          {items}
         </Grid>
+        <Stack spacing={2} alignItems="center" justify="center">
+          <Pagination
+            key={"pag"}
+            sx={{ marginTop: "48px", MarginBottom: "16px" }}
+            count={pcount}
+            variant="outlined"
+            color="primary"
+            // shape="rounded"
+            page={page}
+            onChange={HandleChange}
+          />
+        </Stack>
       </Container>
     </Box>
   );
 }
-export default Content;
+export { Content, ItemContext };

@@ -5,10 +5,38 @@ h1 {
 
 }
 
+h3 {
+    color: burlywood !important;
+
+    float: left;
+
+}
+
 .MuiContainer-root.MuiContainer-maxWidthSm.css-cuefkz-MuiContainer-root {
     margin-left: 0px;
 }
 
 li {
     color: beige;
+}
+
+button.MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-outlined.MuiPaginationItem-rounded.MuiPaginationItem-outlinedPrimary.MuiPaginationItem-page.css-r93niq-MuiButtonBase-root-MuiPaginationItem-root {
+    border-color: white;
+    color: white;
+}
+
+.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-outlined.MuiPaginationItem-rounded.MuiPaginationItem-outlinedPrimary.MuiPaginationItem-ellipsis.css-1v2lvtn-MuiPaginationItem-root {
+    color: white;
+}
+
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiPaginationItem-icon.css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon {
+    color: white;
+}
+
+button.MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-outlined.MuiPaginationItem-circular.MuiPaginationItem-outlinedPrimary.MuiPaginationItem-page.css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root {
+    color: white;
+}
+
+.MuiTableCell-root {
+    border-bottom: none !important;
 }
